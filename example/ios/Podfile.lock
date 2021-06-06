@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - lesson_platform_channels (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - lesson_platform_channels (from `.symlinks/plugins/lesson_platform_channels/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  lesson_platform_channels:
+    :path: ".symlinks/plugins/lesson_platform_channels/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  lesson_platform_channels: 2200f778b8585fa3eff423a1c02bafdb3549d839
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1

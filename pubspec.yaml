@@ -1,0 +1,25 @@
+name: lesson_platform_channels
+description: A new flutter plugin project.
+version: 0.0.1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  pigeon: ^0.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.example.lesson_platform_channels
+        pluginClass: LessonPlatformChannelsPlugin
+      ios:
+        pluginClass: LessonPlatformChannelsPlugin
