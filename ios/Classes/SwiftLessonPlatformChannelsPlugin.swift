@@ -6,17 +6,21 @@ public class SwiftLessonPlatformChannelsPlugin: NSObject, FlutterPlugin {
   var eventSink: FlutterEventSink?
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "lesson_platform_channels", binaryMessenger: registrar.messenger())
-
-    let eventChannel = FlutterEventChannel(name: "lesson_platform_channels_event_channel", binaryMessenger: registrar.messenger())
-
     let instance = SwiftLessonPlatformChannelsPlugin()
+    
+    // Method Channel
+    let channel = FlutterMethodChannel(name: "lesson_platform_channels", binaryMessenger: registrar.messenger())
     instance.channel = channel
+    registrar.addMethodCallDelegate(instance, channel: channel)
+    
+    // Application Delegate
+    registrar.addApplicationDelegate(instance)
+    
+    // Event Channel
+    let eventChannel = FlutterEventChannel(name: "lesson_platform_channels_event_channel", binaryMessenger: registrar.messenger())
     eventChannel.setStreamHandler(instance)
 
-    registrar.addMethodCallDelegate(instance, channel: channel)
-    registrar.addApplicationDelegate(instance)
-
+    // Platform View Factory
     let viewFactory = ExampleViewFactory()
     registrar.register(viewFactory, withId: "ExampleView")
   }
@@ -38,15 +42,18 @@ public class SwiftLessonPlatformChannelsPlugin: NSObject, FlutterPlugin {
 }
 
 extension SwiftLessonPlatformChannelsPlugin: UIApplicationDelegate {
+  // Method Channel Usage
   public func applicationDidEnterBackground(_ application: UIApplication) {
     channel?.invokeMethod("enterBackground", arguments: nil)
   }
 
+  // Event Channel Usage
   public func applicationWillEnterForeground(_ application: UIApplication) {
     eventSink?("enterForeground")
   }
 }
 
+// Event Channel
 extension SwiftLessonPlatformChannelsPlugin: FlutterStreamHandler {
   public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
     self.eventSink = events
