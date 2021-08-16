@@ -2,6 +2,9 @@
 
 A new flutter plugin project.
 
+## Slides
+* [Available here](https://disk.yandex.ru/d/LkZNWE5YxODxow)
+
 ## Getting Started
 
 This project is a starting point for a Flutter
